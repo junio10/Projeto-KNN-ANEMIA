@@ -2,24 +2,21 @@ from tkinter import *
 import knn as k
 
 
+
 def te():
     
     if k.Treinar(radio_Btn_gender.get(),box_hemoglobin.get(),box_Mch.get(),box_Mchc.get(),box_Mcv.get(),radio_Algoritmo.get()) == 1:
-        tex = 'anemico'
+        tex = 'Você foi diagnosticado com anemia. Recomendo procurar o centro de saúde mais próximo.'
     else:
-        tex = 'não tem anemia'
+        tex = 'Você não foi diagnosticado com anemia.'
     
     texto = f'''
     {tex}
     '''
     text2['text'] = texto
     
-    
-    
-    
-
-
 janela = Tk()
+
 radio_Btn_gender = IntVar()
 box_hemoglobin = DoubleVar()
 box_Mch = DoubleVar()
@@ -27,18 +24,15 @@ box_Mchc = DoubleVar()
 box_Mcv = DoubleVar()
 radio_Algoritmo = IntVar()
 
-
-
-
-
 janela.title("Diagnóstico de anemia")
 janela.geometry('520x300')
+
 
 txt_titulo = Label(janela, text="Diagnóstico de anemia")
 txt_titulo.grid(column=0, row=0, columnspan=5, pady=17)
 
-rdioMasculino = Radiobutton(janela, text="Masculino", variable=radio_Btn_gender, value=1)
-rdioFeminino = Radiobutton(janela, text= "Feminino", variable=radio_Btn_gender, value=0)
+rdioMasculino = Radiobutton(janela, text="Homem", variable=radio_Btn_gender, value=1)
+rdioFeminino = Radiobutton(janela, text= "Mulher", variable=radio_Btn_gender, value=0)
 
 rdioMasculino.grid(column=0, row=2,columnspan=3, pady=15)
 rdioFeminino.grid(column=1, row=2,columnspan=5)
@@ -70,10 +64,10 @@ rdio_Knn.grid(column = 1, row = 6, pady=15)
 rdio_Preceptron.grid(column = 2, row = 6)
 
 butao = Button(janela,text='teste',command=te)
-butao.grid(column=0, row=7,columnspan=5,)
+butao.grid(column=0, row=7,columnspan=5)
 
 text2 = Label(janela,text='')
-text2.grid(column=0,row=6)
+text2.grid(column=0, row=8,columnspan=5)
 #chamada da funcao
 
 

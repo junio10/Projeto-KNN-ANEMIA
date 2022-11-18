@@ -30,7 +30,7 @@ def treinarRedePreceptron(atributos_norm,diagnostico_norm):
 
 
 
-def Treinar(n1,n2,n3,n4,n5,algoritmo):
+def Treinar(gender,hemoglobin,mch,mchc,mcv,algoritmo):
     dadosT = normaliazarDados(base_Treinamento)
     diagnostico_norm = base_Treinamento[:, 5]
     if algoritmo == 1:
@@ -38,6 +38,6 @@ def Treinar(n1,n2,n3,n4,n5,algoritmo):
     else:
         modelo = treinarRedePreceptron(dadosT,diagnostico_norm)
     
-    teste = [[n1,n2,n3,n4,n5]]
+    teste = [[gender,hemoglobin,mch,mchc,mcv]]
     testeT = min_max.transform(teste)
     return modelo.predict(testeT)
