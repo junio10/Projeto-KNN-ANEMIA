@@ -1,1 +1,2 @@
-<h1 align="center">Projeto de IA usando algorítimo KNN</h1>
+<h1 align="center">Projeto de IA</h1>
+<h2>K—Nearest Neighbors(KNN)</h2>
