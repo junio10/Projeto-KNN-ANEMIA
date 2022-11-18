@@ -4,7 +4,7 @@ import knn as k
 
 def te():
     
-    if k.Treinar(radio_Btn.get(),box_hemoglobin.get(),box_Mch.get(),box_Mchc.get(),box_Mcv.get(), radio_Algoritmo.get()) == 1:
+    if k.Treinar(radio_Btn_gender.get(),box_hemoglobin.get(),box_Mch.get(),box_Mchc.get(),box_Mcv.get(),radio_Algoritmo.get()) == 1:
         tex = 'anemico'
     else:
         tex = 'não tem anemia'
@@ -20,64 +20,60 @@ def te():
 
 
 janela = Tk()
-radio_Btn = IntVar()
-radio_Algoritmo = IntVar()
+radio_Btn_gender = IntVar()
 box_hemoglobin = DoubleVar()
 box_Mch = DoubleVar()
 box_Mchc = DoubleVar()
 box_Mcv = DoubleVar()
+radio_Algoritmo = IntVar()
 
 
 
 
 
 janela.title("Diagnóstico de anemia")
+janela.geometry('520x300')
 
 txt_titulo = Label(janela, text="Diagnóstico de anemia")
-txt_titulo.grid(column=0, row=0)
+txt_titulo.grid(column=0, row=0, columnspan=5, pady=17)
 
-txt_algoritmo = Label(janela, text = "Selecione o algoritmo:")
-txt_algoritmo.grid(column=0, row = 2)
+rdioMasculino = Radiobutton(janela, text="Masculino", variable=radio_Btn_gender, value=1)
+rdioFeminino = Radiobutton(janela, text= "Feminino", variable=radio_Btn_gender, value=0)
+
+rdioMasculino.grid(column=0, row=2,columnspan=3, pady=15)
+rdioFeminino.grid(column=1, row=2,columnspan=5)
+
+txt_Hemoglobin = Label(janela, text="Hemoglobina")
+txt_Hemoglobin.grid(column= 0, row=4,columnspan=5, sticky="w")
+value_Hemoglobin = Entry(janela,textvariable=box_hemoglobin)
+value_Hemoglobin.grid(column=0, row =5,padx=3)
+
+txt_Mch = Label(janela, text="MCH")
+txt_Mch.grid(column= 1, row=4, columnspan=5, sticky="w")
+value_Mch = Entry(janela,textvariable=box_Mch,)
+value_Mch.grid(column=1, row =5,padx=3)
+
+txt_Mchc = Label(janela, text="MCHC")
+txt_Mchc.grid(column= 2, row=4,columnspan=5, sticky="w")
+value_Mchc = Entry(janela,textvariable=box_Mchc)
+value_Mchc.grid(column=2, row =5,padx=3)
+
+txt_Mcv = Label(janela, text="MCV")
+txt_Mcv.grid(column= 3, row=4,columnspan=5, sticky="w")
+value_Mcv = Entry(janela,textvariable=box_Mcv)
+value_Mcv.grid(column=3, row =5,padx=3)
+
 rdio_Knn = Radiobutton(janela, text="KNN", variable=radio_Algoritmo, value=1)
 rdio_Preceptron = Radiobutton(janela, text= "Preceptron", variable=radio_Algoritmo, value=0)
 
-rdio_Knn.grid(column = 0, row = 3, sticky="W")
-rdio_Preceptron.grid(column = 1, row = 3, sticky="W")
-
-txt_genero = Label(janela, text="Selecione o genero:")
-txt_genero.grid(column = 0, row = 4)
-rdioMasculino = Radiobutton(janela, text="Masculino", variable=radio_Btn, value=1)
-rdioFeminino = Radiobutton(janela, text= "Feminino", variable=radio_Btn, value=0)
-
-rdioMasculino.grid(column=0, row=5, sticky="W")
-rdioFeminino.grid(column=1, row=5, sticky="W")
-
-txt_Hemoglobin = Label(janela, text="Digite o valor da Hemoglobina")
-txt_Hemoglobin.grid(column= 0, row=6)
-value_Hemoglobin = Entry(janela,textvariable=box_hemoglobin)
-value_Hemoglobin.grid(column=0, row =7)
-
-txt_Mch = Label(janela, text="Digite o valor do Mch")
-txt_Mch.grid(column= 0, row=8)
-value_Mch = Entry(janela,textvariable=box_Mch,)
-value_Mch.grid(column=0, row =9)
-
-txt_Mchc = Label(janela, text="Digite o valor do Mchc")
-txt_Mchc.grid(column= 0, row=10)
-value_Mchc = Entry(janela,textvariable=box_Mchc)
-value_Mchc.grid(column=0, row =11)
-
-txt_Mcv = Label(janela, text="Digite o valor do Mcv")
-txt_Mcv.grid(column= 0, row=12)
-value_Mcv = Entry(janela,textvariable=box_Mcv)
-value_Mcv.grid(column=0, row =13)
-
+rdio_Knn.grid(column = 1, row = 6, pady=15)
+rdio_Preceptron.grid(column = 2, row = 6)
 
 butao = Button(janela,text='teste',command=te)
-butao.grid(column=0, row=15)
+butao.grid(column=0, row=7,columnspan=5,)
 
 text2 = Label(janela,text='')
-text2.grid(column=0,row=16)
+text2.grid(column=0,row=6)
 #chamada da funcao
 
 
