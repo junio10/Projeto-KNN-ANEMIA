@@ -1,5 +1,22 @@
 from tkinter import *
+import knn as k
 
+
+def te():
+    
+    if k.Treinar(radio_Btn.get(),box_hemoglobin.get(),box_Mch.get(),box_Mchc.get(),box_Mcv.get()) == 1:
+        tex = 'anemico'
+    else:
+        tex = 'não tem anemia'
+    
+    texto = f'''
+    {tex}
+    '''
+    text2['text'] = texto
+    
+    
+    
+    
 
 
 janela = Tk()
@@ -8,6 +25,10 @@ box_hemoglobin = DoubleVar()
 box_Mch = DoubleVar()
 box_Mchc = DoubleVar()
 box_Mcv = DoubleVar()
+
+
+
+
 
 janela.title("Diagnóstico de anemia")
 
@@ -42,6 +63,12 @@ txt_Mcv.grid(column= 0, row=12)
 value_Mcv = Entry(janela,textvariable=box_Mcv)
 value_Mcv.grid(column=0, row =13)
 
+
+butao = Button(janela,text='teste',command=te)
+butao.grid(column=0, row=15)
+
+text2 = Label(janela,text='')
+text2.grid(column=0,row=16)
 #chamada da funcao
 
 
@@ -51,4 +78,9 @@ value_Mcv.grid(column=0, row =13)
 
 
 janela.mainloop()
+
+
+
+
+
 
