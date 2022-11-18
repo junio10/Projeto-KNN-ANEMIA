@@ -17,5 +17,5 @@ diagnostico_norm = base_Treinamento[:, 5]
 #treinando a rede
 modelo = KNeighborsClassifier(n_neighbors = 1)
 modelo.fit(atributos_norm, diagnostico_norm)
-print('Acurácia: %.f' % (modelo.score(atributos_norm, diagnostico_norm)*100) + '%')
+print('Acurácia: %.f' % (modelo.score(atributos_norm, diagnostico_norm) * 100) + '%')
 
