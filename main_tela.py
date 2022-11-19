@@ -114,7 +114,7 @@ rdio_Preceptron.grid(column = 2, row = 6)
 botao_sair = Button(janela,text='Sair',
                fg = 'white', 
                bg = 'Red',
-               command=quit,
+               command=janela.destroy,
                font="Roboto 13",
                relief="ridge",
                border=2,
