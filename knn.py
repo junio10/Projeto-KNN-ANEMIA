@@ -17,7 +17,7 @@ def normalizarDados(base_Treinamento):
 
 #treinando a rede Knn
 def treinarRedeKNN(atributos_norm,diagnostico_norm):
-    modelo = KNeighborsClassifier(n_neighbors = 1)
+    modelo = KNeighborsClassifier(n_neighbors = 7)
     modelo.fit(atributos_norm, diagnostico_norm)
     return modelo
 #treinan rede preceptron
