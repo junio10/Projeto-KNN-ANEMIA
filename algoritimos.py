@@ -37,3 +37,10 @@ def Treinar(gender,hemoglobin,mch,mchc,mcv,algoritmo):
     teste = [[gender,hemoglobin,mch,mchc,mcv]]
     testeT = min_max.transform(teste)
     return modelo.predict(testeT)
+
+def mostrarAcuracia():
+    dadosT = normalizarDados(base_Treinamento)
+    diagnostico_norm = base_Treinamento[:, 5]
+    modeloKnn = treinarRedeKNN(dadosT,diagnostico_norm)
+    modeloPreceprtron = treinarRedePreceptron(dadosT,diagnostico_norm)
+    return modeloKnn.score(dadosT,diagnostico_norm), modeloPreceprtron.score(dadosT,diagnostico_norm)
