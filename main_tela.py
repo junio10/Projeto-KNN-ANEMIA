@@ -3,7 +3,7 @@ import knn as k
 
 
 
-def te():
+def diagnosticar():
     janelaResposta = Tk()
     janelaResposta.title("Diagnóstico de anemia")
     janelaResposta.geometry('320x100')
@@ -78,7 +78,7 @@ rdio_Preceptron = Radiobutton(janela, text= "Preceptron", variable=radio_Algorit
 rdio_Knn.grid(column = 1, row = 6, pady=15)
 rdio_Preceptron.grid(column = 2, row = 6)
 
-butao = Button(janela,text='Diagnósticar',fg = 'white', bg = 'green',command=te)
+butao = Button(janela,text='Diagnósticar',fg = 'white', bg = 'green',command=diagnosticar)
 butao.grid(column=0, row=7,columnspan=5)
 
 text2 = Label(janela,text='')

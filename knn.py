@@ -7,13 +7,12 @@ from sklearn.linear_model import Perceptron
 
 #importando a base de dados atraves do gitHub
 url = 'https://raw.githubusercontent.com/junio10/Projeto-KNN-ANEMIA/main/anemia.csv'
-base_arquivo = pd.read_csv(url)
 base_Treinamento = pd.read_csv(url,sep=',', encoding = 'latin1').values
 
 #normalizando os dados
 min_max = preprocessing.MinMaxScaler()
 #normalizando os dados
-def normaliazarDados(base_Treinamento):
+def normalizarDados(base_Treinamento):
     return min_max.fit_transform(base_Treinamento[:,:5])
 
 #treinando a rede
@@ -31,7 +30,7 @@ def treinarRedePreceptron(atributos_norm,diagnostico_norm):
 
 
 def Treinar(gender,hemoglobin,mch,mchc,mcv,algoritmo):
-    dadosT = normaliazarDados(base_Treinamento)
+    dadosT = normalizarDados(base_Treinamento)
     diagnostico_norm = base_Treinamento[:, 5]
     if algoritmo == 1:
         modelo = treinarRedeKNN(dadosT,diagnostico_norm)
