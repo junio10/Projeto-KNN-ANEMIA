@@ -4,16 +4,31 @@ import knn as k
 
 
 def te():
+    janelaResposta = Tk()
+    janelaResposta.title("Diagnóstico de anemia")
+    janelaResposta.geometry('320x100')
+    janelaResposta.resizable(0, 0)
+    btnSair = Button(janelaResposta,text='Sair',fg = 'white' , bg= 'red', command=janelaResposta.destroy)
     
+
     if k.Treinar(radio_Btn_gender.get(),box_hemoglobin.get(),box_Mch.get(),box_Mchc.get(),box_Mcv.get(),radio_Algoritmo.get()) == 1:
-        tex = 'Você foi diagnosticado com anemia. Recomendo procurar o centro de saúde mais próximo.'
+        textoResultado = Label(janelaResposta, text = 'Você foi diagnosticado com anemia.')
+        textoResultado.pack()
+        textoResultado2 = Label(janelaResposta, text ='Recomendado procurar o centro de saúde mais próximo.')
+        textoResultado2.pack()
+        btnSair.pack()
+     
     else:
-        tex = 'Você não foi diagnosticado com anemia.'
+        textoResultado = Label(janelaResposta, text = 'Você não foi diagnosticado com anemia.')
+        textoResultado.pack()
+        btnSair.pack()
+
     
-    texto = f'''
-    {tex}
-    '''
-    text2['text'] = texto
+    
+ 
+    
+   
+
     
 janela = Tk()
 
@@ -63,7 +78,7 @@ rdio_Preceptron = Radiobutton(janela, text= "Preceptron", variable=radio_Algorit
 rdio_Knn.grid(column = 1, row = 6, pady=15)
 rdio_Preceptron.grid(column = 2, row = 6)
 
-butao = Button(janela,text='teste',command=te)
+butao = Button(janela,text='Diagnósticar',fg = 'white', bg = 'green',command=te)
 butao.grid(column=0, row=7,columnspan=5)
 
 text2 = Label(janela,text='')
