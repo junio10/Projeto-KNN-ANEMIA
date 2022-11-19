@@ -1,13 +1,23 @@
 from tkinter import *
 import algoritimos as a
 from tkinter import messagebox
+import math
 
 def diagnosticar():
     if a.Treinar(radio_Btn_gender.get(),box_hemoglobin.get(),box_Mch.get(),box_Mchc.get(),box_Mcv.get(),radio_Algoritmo.get()) == 1:
         messagebox.showwarning(title="Resultado do diagnóstico",message='Você foi diagnosticado com anemia. Recomendado procurar o centro de saúde mais próximo.')     
     else:
         messagebox.showinfo(title="Resultado do diagnóstico",message='Você não foi diagnosticado com anemia.')     
-   
+
+def Acuracia():
+    modeloKnn = DoubleVar()
+    modeloPreceptron = DoubleVar()
+    modeloKnn, modeloPreceptron = a.mostrarAcuracia()
+
+    modeloPreceptron = math.trunc(modeloPreceptron * 100)
+    modeloKnn = math.trunc(modeloKnn * 100)
+    messagebox.showinfo(title="Acurácia dos algorítimos",message='Preceptron = '+str(modeloPreceptron) + '%\nKNN = '+ str(modeloKnn) + '%')
+
 janela = Tk()
 
 radio_Btn_gender = IntVar()
@@ -100,16 +110,6 @@ rdio_Preceptron = Radiobutton(janela,
 
 rdio_Knn.grid(column = 1, row = 6, pady=15)
 rdio_Preceptron.grid(column = 2, row = 6)
-botao = Button(janela,
-               text='Diagnósticar',
-               fg = 'white', 
-               bg = 'green',
-               command=diagnosticar,
-               font="Roboto 13",
-               relief="ridge",
-               border=2,
-               )
-botao.grid(column=0, row=7,columnspan=5,pady=20)
 
 botao_sair = Button(janela,text='Sair',
                fg = 'white', 
@@ -119,7 +119,29 @@ botao_sair = Button(janela,text='Sair',
                relief="ridge",
                border=2,
                )
-botao_sair.grid(column=1, row=7,columnspan=5,sticky="w")
+botao_sair.grid(column=0, row=7,columnspan=2)
+
+botao = Button(janela,
+               text='Diagnósticar',
+               fg = 'white', 
+               bg = 'green',
+               command=diagnosticar,
+               font="Roboto 13",
+               relief="ridge",
+               border=2,
+               )
+botao.grid(column=1, row=7,columnspan=2,pady=20)
+
+botao_acuracia = Button(janela,
+               text='Acurácia',
+               fg = 'white', 
+               bg = 'Blue',
+               command=Acuracia,
+               font="Roboto 13",
+               relief="ridge",
+               border=2,
+               )
+botao_acuracia.grid(column=2, row=7,columnspan=2,pady=20)
 
 janela.mainloop()
 
