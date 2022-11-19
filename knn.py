@@ -15,19 +15,16 @@ min_max = preprocessing.MinMaxScaler()
 def normalizarDados(base_Treinamento):
     return min_max.fit_transform(base_Treinamento[:,:5])
 
-#treinando a rede
+#treinando a rede Knn
 def treinarRedeKNN(atributos_norm,diagnostico_norm):
     modelo = KNeighborsClassifier(n_neighbors = 1)
     modelo.fit(atributos_norm, diagnostico_norm)
     return modelo
-
+#treinan rede preceptron
 def treinarRedePreceptron(atributos_norm,diagnostico_norm):
     modelo =  Perceptron()
     modelo.fit(atributos_norm, diagnostico_norm)
     return modelo
-
-
-
 
 def Treinar(gender,hemoglobin,mch,mchc,mcv,algoritmo):
     dadosT = normalizarDados(base_Treinamento)

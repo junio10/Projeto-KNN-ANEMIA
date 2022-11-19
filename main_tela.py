@@ -1,35 +1,14 @@
 from tkinter import *
 import knn as k
-
+from tkinter import messagebox
 
 
 def diagnosticar():
-    janelaResposta = Tk()
-    janelaResposta.title("Diagnóstico de anemia")
-    janelaResposta.geometry('320x100')
-    janelaResposta.resizable(0, 0)
-    btnSair = Button(janelaResposta,text='Sair',fg = 'white' , bg= 'red', command=janelaResposta.destroy)
-    
-
     if k.Treinar(radio_Btn_gender.get(),box_hemoglobin.get(),box_Mch.get(),box_Mchc.get(),box_Mcv.get(),radio_Algoritmo.get()) == 1:
-        textoResultado = Label(janelaResposta, text = 'Você foi diagnosticado com anemia.')
-        textoResultado.pack()
-        textoResultado2 = Label(janelaResposta, text ='Recomendado procurar o centro de saúde mais próximo.')
-        textoResultado2.pack()
-        btnSair.pack()
-     
+        messagebox.showwarning(title="Resultado do diagnóstico",message='Você foi diagnosticado com anemia. Recomendado procurar o centro de saúde mais próximo.')     
     else:
-        textoResultado = Label(janelaResposta, text = 'Você não foi diagnosticado com anemia.')
-        textoResultado.pack()
-        btnSair.pack()
-
-    
-    
- 
-    
+        messagebox.showinfo(title="Resultado do diagnóstico",message='Você não foi diagnosticado com anemia.')     
    
-
-    
 janela = Tk()
 
 radio_Btn_gender = IntVar()
@@ -40,7 +19,7 @@ box_Mcv = DoubleVar()
 radio_Algoritmo = IntVar()
 
 janela.title("Diagnóstico de anemia")
-janela.geometry('520x300')
+janela.geometry("%dx%d+%d+%d"% (520,300,400,200))
 
 txt_titulo = Label(janela, 
                    text="Diagnóstico de anemia",
@@ -99,18 +78,18 @@ rdio_Knn = Radiobutton(janela,
                        text="KNN", 
                        variable=radio_Algoritmo, 
                        value=1,
-                       font="Roboto 10"
+                       font="Roboto 11"
                        )
 rdio_Preceptron = Radiobutton(janela, 
                               text= "Preceptron", 
                               variable=radio_Algoritmo, 
                               value=0,
-                              font="Roboto 10"
+                              font="Roboto 11"
                               )
 
 rdio_Knn.grid(column = 1, row = 6, pady=15)
 rdio_Preceptron.grid(column = 2, row = 6)
-butao = Button(janela,text='Diagnósticar',
+botao = Button(janela,text='Diagnósticar',
                fg = 'white', 
                bg = 'green',
                command=diagnosticar,
@@ -118,9 +97,9 @@ butao = Button(janela,text='Diagnósticar',
                relief="ridge",
                border=3,
                )
-butao.grid(column=0, row=7,columnspan=5)
+botao.grid(column=0, row=7,columnspan=5)
 
-butao_sair = Button(janela,text='Sair',
+botao_sair = Button(janela,text='Sair',
                fg = 'white', 
                bg = 'Red',
                command=quit,
@@ -128,7 +107,7 @@ butao_sair = Button(janela,text='Sair',
                relief="ridge",
                border=3,
                )
-butao_sair.grid(column=1, row=7,columnspan=5,sticky="w")
+botao_sair.grid(column=1, row=7,columnspan=5,sticky="w")
 
 
 text2 = Label(janela,text='')
@@ -138,8 +117,6 @@ text2.grid(column=0, row=8,columnspan=5)
 
 #labelValue = Label(janela, textvariable=)
 #labelValue.grid(column = 0, row = 5)
-
-
 
 janela.mainloop()
 
