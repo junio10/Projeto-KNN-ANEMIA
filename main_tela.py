@@ -1,9 +1,9 @@
 from tkinter import *
-import knn as k
+import algoritimos as a
 from tkinter import messagebox
 
 def diagnosticar():
-    if k.Treinar(radio_Btn_gender.get(),box_hemoglobin.get(),box_Mch.get(),box_Mchc.get(),box_Mcv.get(),radio_Algoritmo.get()) == 1:
+    if a.Treinar(radio_Btn_gender.get(),box_hemoglobin.get(),box_Mch.get(),box_Mchc.get(),box_Mcv.get(),radio_Algoritmo.get()) == 1:
         messagebox.showwarning(title="Resultado do diagnóstico",message='Você foi diagnosticado com anemia. Recomendado procurar o centro de saúde mais próximo.')     
     else:
         messagebox.showinfo(title="Resultado do diagnóstico",message='Você não foi diagnosticado com anemia.')     
