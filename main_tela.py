@@ -29,8 +29,7 @@ radio_Algoritmo = IntVar()
 
 janela.title("Diagnóstico de anemia")
 janela.geometry("%dx%d+%d+%d"% (520,300,400,200))
-janela = Frame(janela,bg="#C0C0C0")
-janela.pack() 
+janela.config(bg = "#C0C0C0")
 txt_titulo = Label(janela, 
                    text="Diagnóstico de anemia",
                    font="Roboto 20",
